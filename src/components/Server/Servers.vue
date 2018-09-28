@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div class="col-xs-12 col-sm-6">
         <ul class="list-group">
             <li
@@ -7,14 +7,28 @@
                 @click="changeStatus"
                 :data-id="server.id"
                 :data-status="server.status">
-                Server #{{ server.id }} --> Status: {{ server.status }}
+                Server #{{ server.id }} -> Status: {{ server.status }}
             </li>
         </ul>
         <p>Status is now {{ overallStatus }}</p>
     </div>
+</template> -->
+
+<template>
+	<div class="col-xs-12 col-sm-6">
+		<ul class="list-group">
+			<app-server
+				v-for="server in servers"
+				:id="server.id"
+			>
+			</app-server>
+		</ul>
+	</div>
 </template>
 
 <script>
+	import Server from './Server.vue';
+
 	export default {
 		data: function() {
 			return {
@@ -26,20 +40,23 @@
 				]
 			};
 		},
-		methods: {
-			changeStatus() {
-				this.overallStatus = event.target.getAttribute("data-status");
-				this.$emit('changeStatus', this.overallStatus);
-			}
-		},
-		props: {
-			overallStatus: String
+		components: {
+			appServer: Server
 		}
+		// methods: {
+		// 	changeStatus() {
+		// 		this.overallStatus = event.target.getAttribute("data-status");
+		// 		this.$emit('changeStatus', this.overallStatus);
+		// 	}
+		// },
+		// props: {
+		// 	overallStatus: String
+		// }
 	}
 </script>
 
-<style>
+<!-- <style>
 	.list-group-item {
 		cursor: pointer;
 	}
-</style>
+</style> -->
