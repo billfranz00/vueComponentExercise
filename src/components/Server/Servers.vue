@@ -19,7 +19,7 @@
 		<ul class="list-group">
 			<app-server
 				v-for="server in servers"
-				:id="server.id"
+				:server="server"
 			>
 			</app-server>
 		</ul>

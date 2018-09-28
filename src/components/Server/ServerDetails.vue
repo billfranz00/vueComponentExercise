@@ -3,7 +3,10 @@
        <!--  <p v-if="!overallStatus">Server Details are currently not updated</p>
         <p else>{{ overallStatus }}</p>
         <button @click="refreshStatus">Refresh Status</button> -->
-        <p>Server Details are currently not updated</p>
+        <p v-if="!server">Please select a Server</p>
+        <p v-else>Server #{{ server.id }} selected, Status: {{ server.status }}</p>
+        <hr>
+        <button @click="resetStatus">Change to Normal</button>
     </div>
 
 </template>
@@ -23,6 +26,11 @@
 		data: function() {
 			return {
 				server: null
+			}
+		},
+		methods: {
+			resetStatus() {
+				this.server.status = 'Normal'; // Changes status of corresponding server in servers Array (Servers.vue - saved in memory)
 			}
 		},
 		created() {

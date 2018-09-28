@@ -2,17 +2,17 @@
 	<li class="list-group-item"
 		@click="serverSelected"
 	>
-		Server #{{id}}
+		Server #{{ server.id }}
 	</li>
 </template>
 
 <script type="text/javascript">
 	import { serverBus } from '../../main';
 	export default {
-		props: ['id'],
+		props: ['server'],
 		methods: {
 			serverSelected() {
-				serverBus.$emit('serverSelected', this.id);
+				serverBus.$emit('serverSelected', this.server);
 			}
 		}
 	}
